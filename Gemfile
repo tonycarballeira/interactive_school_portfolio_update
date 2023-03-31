@@ -14,6 +14,8 @@ gem "pg"
 
 gem 'sass-rails'
 
+gem 'protected_attributes'
+
 gem 'activeadmin'
 gem 'devise'
 gem 'devise-encryptable'
