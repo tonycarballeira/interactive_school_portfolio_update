@@ -12,6 +12,8 @@ gem "sprockets-rails"
 # Use sqlite3 as the database for Active Record
 gem "pg"
 
+gem 'sass-rails'
+
 gem 'activeadmin'
 gem 'devise'
 gem 'devise-encryptable'
