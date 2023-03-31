@@ -83,6 +83,13 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    coffee-rails (5.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 5.2.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
@@ -100,6 +107,7 @@ GEM
     dockerfile-rails (1.2.5)
       rails
     erubi (1.12.0)
+    execjs (2.8.1)
     ffi (1.15.5)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
@@ -141,6 +149,8 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    libv8-node (16.10.0.0-x86_64-darwin)
+    libv8-node (16.10.0.0-x86_64-linux)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -152,6 +162,8 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_racer (0.6.3)
+      libv8-node (~> 16.10.0.0)
     minitest (5.18.0)
     msgpack (1.7.0)
     net-imap (0.3.4)
@@ -263,12 +275,14 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   bootsnap
+  coffee-rails
   debug
   devise
   devise-encryptable
   dockerfile-rails (>= 1.2)
   importmap-rails
   jbuilder
+  mini_racer
   pg
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)

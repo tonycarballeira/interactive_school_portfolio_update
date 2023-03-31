@@ -17,6 +17,12 @@ gem 'sass-rails'
 gem 'activeadmin'
 gem 'devise'
 gem 'devise-encryptable'
+gem 'coffee-rails'
+gem 'mini_racer'
+
+
+
+
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
