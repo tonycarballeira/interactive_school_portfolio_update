@@ -1,0 +1,132 @@
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>InteractiveSchool</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+ 
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css' />
+
+  <%= javascript_include_tag "jquery.min.js" %>
+  <%= javascript_include_tag "jquery.tubolinks.js" %>
+  <%= javascript_include_tag "responsiveslides.min.js" %>
+  <%= javascript_include_tag "jquery.swipebox.min.js" %>
+  <%= javascript_include_tag "jquery.countdown.min.js" %>
+  
+</head>
+<body>
+  <div class="rapidxwpr">
+    <!-- header -->
+      <div id="header">
+
+        <div class="logo">
+          <%= link_to root_path do %>
+            <%= image_tag "/images/logo.png" %>
+        <% end %>
+        </div>
+
+        <div class="topmenu">
+          <ul>
+            <li><%= link_to "Training", training_path %></li>
+            <li><%= link_to "Contact", contact_path %></li>
+            <% if user_signed_in? %>
+
+            <li class="head-li"><%= link_to "Profile", edit_user_registration_path, :class => 'navbar-link'%></li>
+
+            <li class="head-li"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+          <% else %>
+            <li class="head-li"><%= link_to "Become a Student", new_user_registration_path %></li>
+            <li class="head-li"><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+          <% end %>
+          </ul>
+        </div>
+        <div class="alert-div">
+            <ul class="notice">
+              <% if notice %>
+                <li><%= notice %></li>
+              <% end %>
+        
+              <% if alert %>
+                <li><%= alert %></li>
+              <% end %>
+            </ul>
+        </div>
+
+      </div>
+  <!-- page -->
+  <div class="page">
+    <!-- student page -->
+    <div class="student_page">
+
+      <h1>Hello <%= current_user.first_name %></h1>
+      <div class="enrollment_time"><span class="title">Enrollment left:</span> <span class="countdown">
+                    <% start_time = Date.today  %>
+                    <% @years = current_user.subscription.sub_years %>
+                    <% if current_user.subscription.sub_years > 1 %>
+                    <% @end_time = (current_user.sub_expire_date.to_date + (@years - 1).years).to_s %>
+                    <% else %>
+                    <% @end_time = current_user.sub_expire_date.to_date.to_s %>
+                    <% end %>
+                      <span id="getting-started"></span>
+                       <%= javascript_tag do %>
+
+                        $("#getting-started")
+                         .countdown("<%= @end_time %>", function(event) {
+                           $(this).text(
+                            event.strftime('%D days %H:%M:%S')
+                           );
+                        });
+                       <% end %>
+                  </span> 
+          <a href="" class="add_time">Add more time</a></div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+        <ul>
+          <li><label>Name</label><%= f.text_field :first_name, class: "edit-field1" %><%= f.text_field :last_name, class: "edit-field1" %></li>
+          <li><label>Username</label><%= f.email_field :email, class: "edit-field2" %></li>
+          <li><label>Age</label><%= f.text_field :age, class: "edit-field3" %></li>
+          <li><label>Phone</label><input type="text" name="" class="form-field" value="305-555-0155" /></li>
+          <li><label>Location</label><%= f.text_field :location, class: "edit-field2" %><%= f.submit "Edit Profile", class: "form-btn" %></li>
+        </ul>
+      <% end %>
+
+    </div>
+    <!-- / student page -->
+
+  </div>
+  <!-- / page -->
+
+  <!-- footer -->
+  <div id="footer">
+    <div class="footer_menu">
+      <ul>
+        <li><a href="training.html">Training</a></li>
+        <li><a href="">FAQ</a></li>
+        <li><a href="student.html">Become a student</a></li>
+        <li><a href="">Login</a></li>
+      </ul>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Privacy</a></li>
+        <li><a href="">Terms</a></li>
+      </ul>
+    </div>
+    <div class="footer_share"><a href="">Share with a friend</a></div>
+    <div class="footer_social_links">
+      <a href=""><img src="/images/icon-twitter.png" alt="" /></a>
+      <a href=""><img src="/images/icon-facebook.png" alt="" /></a>
+      <a href=""><img src="/images/icon-instagram.png" alt="" /></a>
+    </div>
+  </div>
+  <!-- / footer -->
+
+</div>
+<!-- / wrapper -->
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+</body>
+</html>

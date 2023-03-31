@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InteractiveSchool</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css' />
+  <%= javascript_include_tag "jquery.min.js" %>
+  
+  <%= javascript_include_tag "responsiveslides.min.js" %>
+  <%= javascript_include_tag "jquery.swipebox.min.js" %>
+  <%= javascript_include_tag "jquery.countdown.min.js" %>
+  
+</head>
+
+<body>
+	
+  <div class="rapidxwpr">
+		
+    <!-- header -->
+		<div id="header">
+
+	    <div class="logo">
+	      <%= link_to root_path do %>
+	      	<%= image_tag "/images/logo.png" %>
+		  <% end %>
+	    </div>
+
+	    <div class="topmenu">
+	      <ul>
+	        <li><%= link_to "Training", training_path %></li>
+	        <li><%= link_to "Contact", contact_path %></li>
+	        
+          
+          
+
+					 <li class="head-li"><%= link_to "Profile", player_path %></li>
+
+				  
+
+					 <li class="head-li"><%= link_to "Become a Student", sign_up_path %></li>
+
+					 <li class="head-li" onclick="return false" data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
+
+				  
+	      </ul>
+	    </div>
+      <div class="alert-div">
+          <ul class="notice">
+            <% if notice %>
+              <li><%= notice %></li>
+            <% end %>
+      
+            <% if alert %>
+              <li><%= alert %></li>
+            <% end %>
+          </ul>
+      </div>
+		</div>
+    <!-- / header -->
+
+    <!-- / Modal -->
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+          <%= render "devise/sessions/new" %>
+          </div>
+        </div>
+      </div>
+    </div>
+		<!-- / Modal -->
+
+      <%= yield %>
+			
+    <!-- footer -->
+    <div id="footer">
+      <div class="footer_menu">
+        <ul>
+          <li><%= link_to "Training", training_path %></li>
+          <li><a href="">FAQ</a></li>
+          
+          <li><%= link_to "Become a Student", sign_up_path %></li>
+          
+          <li><%= link_to "Login", :class => 'navbar-link'  %></li>
+        </ul>
+        <ul>
+          <li><%= link_to "Contact", contact_path %></li>
+          <li><a href="">Blog</a></li>
+          <li><a href="">Privacy</a></li>
+          <li><a href="">Terms</a></li>
+        </ul>
+      </div>
+      <div class="footer_share"><a href="">Share with a friend</a></div>
+      <div class="footer_social_links">
+        <a href=""><img src="/images/icon-twitter.png" alt="" /></a>
+        <a href=""><img src="/images/icon-facebook.png" alt="" /></a>
+        <a href=""><img src="/images/icon-instagram.png" alt="" /></a>
+      </div>
+    </div>
+    <!-- / footer -->
+
+		
+
+	</div>
+
+</body>
+
+</html>
